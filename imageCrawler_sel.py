@@ -58,12 +58,19 @@ hList = []
 totalLen = len(driver.find_elements_by_class_name('painting-list-text-row'))
 base0Len = len(baseurl0)
 element = driver.find_elements_by_xpath('/html/body/div[2]/div[1]/section/main/div[2]/div[3]/div[2]/div/div/ul/li/a[1]')
+
+erCnt = 0
 for i in range(len(element)):
     title = element[i].get_attribute('href')
     title = title[base0Len:]
     href = prefix + title + suffix
     print(title)
-    urllib.request.urlretrieve(href, savePath + title + '.jpg')
-
+    try:
+        urllib.request.urlretrieve(href, savePath + title + '.jpg')
+    except:
+        erCnt += 1
+        
+        
+print(str(erCnt) + ' errors while url downloading...')
     #girl reading; i=218
     
