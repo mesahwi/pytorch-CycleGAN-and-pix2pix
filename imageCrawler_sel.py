@@ -6,12 +6,20 @@ Created on Tue May  7 14:59:35 2019
 @author: allesgut
 """
 
+#for colab
+!apt install chromium-chromedriver
+!cp /usr/lib/chromium-browser/chromedriver /usr/bin
+!pip install selenium
+
 from bs4 import BeautifulSoup
 import urllib.request
 from selenium import webdriver
 import os, time
+options = webdriver.ChromeOptions()
+options.add_argument('--headless')
+options.add_argument('--no-sandbox')
+options.add_argument('--disable-dev-shm-usage')
 
-    
 
 nameList = []
 baseurl0 = 'https://www.wikiart.org/en/pierre-auguste-renoir/' 
@@ -23,7 +31,7 @@ suffix = '.jpg'
 savePath = '../gdrive/My Drive/CycleGan/face/Renoir/'
 
 directory = os.getcwd()
-driver = webdriver.Chrome(directory+'/chromedriver-2')
+driver = webdriver.Chrome('chromedriver',options=options)
 driver.implicitly_wait(3)
 driver.get(baseurl)
 
