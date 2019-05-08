@@ -7,9 +7,9 @@ Created on Tue May  7 14:59:35 2019
 """
 
 #for colab
-!apt install chromium-chromedriver
-!cp /usr/lib/chromium-browser/chromedriver /usr/bin
-!pip install selenium
+#!apt install chromium-chromedriver
+#!cp /usr/lib/chromium-browser/chromedriver /usr/bin
+#!pip install selenium
 
 from bs4 import BeautifulSoup
 import urllib.request
