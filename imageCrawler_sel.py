@@ -20,7 +20,7 @@ baseurl = baseurl0 + 'all-works/#!#filterName:Genre_portrait,resultType:text'
 prefix = 'https://uploads0.wikiart.org/images/pierre-auguste-renoir/'
 suffix = '.jpg'
 
-savePath = '/Users/allesgut/Desktop/Main/1.courses/2019-1/AI/CycleGan/Impressionist/Renoir/'
+savePath = '../gdrive/My Drive/CycleGan/face/Renoir/'
 
 directory = os.getcwd()
 driver = webdriver.Chrome(directory+'/chromedriver-2')
