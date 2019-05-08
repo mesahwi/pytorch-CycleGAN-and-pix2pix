@@ -11,6 +11,7 @@ Created on Tue May  7 14:59:35 2019
 #!cp /usr/lib/chromium-browser/chromedriver /usr/bin
 #!pip install selenium
 
+import sys
 from bs4 import BeautifulSoup
 import urllib.request
 from selenium import webdriver
@@ -20,15 +21,20 @@ options.add_argument('--headless')
 options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
 
+artistName = sys.argv[1]
+artistPath = artistName + '/'
 
 nameList = []
-baseurl0 = 'https://www.wikiart.org/en/pierre-auguste-renoir/' 
+# baseurl0 = 'https://www.wikiart.org/en/pierre-auguste-renoir/' 
+baseurl0 = 'https://www.wikiart.org/en/'+ artistPath
 baseurl = baseurl0 + 'all-works/#!#filterName:Genre_portrait,resultType:text'
 
-prefix = 'https://uploads0.wikiart.org/images/pierre-auguste-renoir/'
+# prefix = 'https://uploads0.wikiart.org/images/pierre-auguste-renoir/'
+prefix = 'https://uploads0.wikiart.org/images/' + artistPath
 suffix = '.jpg'
 
-savePath = '../gdrive/My Drive/CycleGan/face/Renoir/'
+# savePath = '../gdrive/My Drive/CycleGan/face/Renoir/'
+savePath = '../gdrive/My Drive/CycleGan/face/' + artistPath
 
 directory = os.getcwd()
 driver = webdriver.Chrome('chromedriver',options=options)
