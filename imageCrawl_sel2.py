@@ -19,11 +19,19 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import os, time
 
+
+options = webdriver.ChromeOptions()
+options.add_argument('--headless')
+options.add_argument('--no-sandbox')
+options.add_argument('--disable-dev-shm-usage')
+
+
 baseurl = 'https://unsplash.com/collections/1112424/portraits'
 
 
 directory = os.getcwd()
-driver = webdriver.Chrome(directory+'/chromedriver-2')
+driver = webdriver.Chrome('chromedriver',options=options)
+driver.implicitly_wait(3)
 driver.get(baseurl)
 time.sleep(3)
 
