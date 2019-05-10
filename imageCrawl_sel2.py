@@ -51,6 +51,31 @@ while True:
         logo = driver.find_element_by_xpath('//*[@id="app"]/div/div[6]/div[2]/p')
         break
     except:
-        time.sleep(30)
+        time.sleep(10)
         
 print('scroll complete')
+
+savePath = '../gdrive/My Drive/CycleGan/face/facePics_re/'
+elements = driver.find_elements_by_xpath('//*[@id="app"]/div/div[6]/div[1]/div/div/div[*]/figure[*]/div/a')
+
+errcnt = 0
+succnt = 0
+for i in range(len(elements)):
+    try:
+        link = elements[i].get_attribute('href')
+        tmpWindow = webdriver.Chrome('chromedriver',options=options)
+        time.sleep(0.2)
+        tmpWindow.get(link)
+        print('window'+str(i)+' open')
+        pic = tmpWindow.find_elements_by_xpath('//*[@id="app"]/div/div[4]/div/div[1]/div[3]/div/div/button/div[2]/img')
+        href = pic[0].get_attribute('src')
+        urllib.request.urlretrieve(href,savePath+str(i)+'.jpg')
+        tmpWindow.close()
+        succnt += 1
+    except:
+        errcnt += 1
+        
+
+print('success : ' + str(succnt) +', ' + 'error : ' + str(errcnt))
+
+
