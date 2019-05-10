@@ -55,4 +55,6 @@ urllib.request.install_opener(opener)
 for i in range(len(elements)):
     href = elements[i].get_attribute('srcset').split(' ')[0]
     urllib.request.urlretrieve(href,savePath+str(i)+'.jpg')
+    print(i)
 
+print('crawling completed')
